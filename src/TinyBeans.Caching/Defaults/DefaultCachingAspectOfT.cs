@@ -5,7 +5,7 @@ using Microsoft.Extensions.Options;
 using TinyBeans.Caching.Options;
 
 namespace TinyBeans.Caching.Defaults {
-    public class DefaultCachingAspect<T> : ICachingAspect<T> where T : class {
+    public class DefaultCachingAspect : ICachingAspect {
         private readonly ICachingSerializer _cachingSerializer;
         private readonly IDistributedCache _distributedCache;
         private readonly IOptionsMonitor<CachingOptions> _options;
@@ -174,7 +174,7 @@ namespace TinyBeans.Caching.Defaults {
 
             var r = await method();
 
-            WriteCache<R>(method, r);
+            await WriteCacheAsync<R>(method, r);
 
             return r;
         }
@@ -195,7 +195,7 @@ namespace TinyBeans.Caching.Defaults {
 
             var r = await method(p1);
 
-            WriteCache<R>(method, r);
+            await WriteCacheAsync<R>(method, r);
 
             return r;
         }
@@ -218,7 +218,7 @@ namespace TinyBeans.Caching.Defaults {
 
             var r = await method(p1, p2);
 
-            WriteCache<R>(method, r);
+            await WriteCacheAsync<R>(method, r);
 
             return r;
         }
@@ -243,7 +243,7 @@ namespace TinyBeans.Caching.Defaults {
 
             var r = await method(p1, p2, p3);
 
-            WriteCache<R>(method, r);
+            await WriteCacheAsync<R>(method, r);
 
             return r;
         }
@@ -270,7 +270,7 @@ namespace TinyBeans.Caching.Defaults {
 
             var r = await method(p1, p2, p3, p4);
 
-            WriteCache<R>(method, r);
+            await WriteCacheAsync<R>(method, r);
 
             return r;
         }
@@ -299,13 +299,13 @@ namespace TinyBeans.Caching.Defaults {
 
             var r = await method(p1, p2, p3, p4, p5);
 
-            WriteCache<R>(method, r);
+            await WriteCacheAsync<R>(method, r);
 
             return r;
         }
 
         private (bool Success, R R) ReadCache<R>(Delegate method) {
-            var key = string.Concat(typeof(T).FullName, ".", method.Method.Name);
+            var key = string.Concat(method.Target.GetType().FullName, ".", method.Method.Name);
 
             if (_distributedCache.GetString(key) is string raw) {
                 return (true, _cachingSerializer.Deserialize<R>(raw));
@@ -315,7 +315,7 @@ namespace TinyBeans.Caching.Defaults {
         }
 
         private async Task<(bool Success, R R)> ReadCacheAsync<R>(Delegate method) {
-            var key = string.Concat(typeof(T).FullName, ".", method.Method.Name);
+            var key = string.Concat(method.Target.GetType().FullName, ".", method.Method.Name);
 
             if (await _distributedCache.GetStringAsync(key) is string raw) {
                 return (true, _cachingSerializer.Deserialize<R>(raw));
@@ -325,7 +325,7 @@ namespace TinyBeans.Caching.Defaults {
         }
 
         private void WriteCache<R>(Delegate method, R obj) {
-            var key = string.Concat(typeof(T).FullName, ".", method.Method.Name);
+            var key = string.Concat(method.Target.GetType().FullName, ".", method.Method.Name);
             var raw = _cachingSerializer.Serialize(obj);
             var options = _options.CurrentValue;
 
@@ -336,7 +336,7 @@ namespace TinyBeans.Caching.Defaults {
         }
 
         private async Task WriteCacheAsync<R>(Delegate method, R obj) {
-            var key = string.Concat(typeof(T).FullName, ".", method.Method.Name);
+            var key = string.Concat(method.Target.GetType().FullName, ".", method.Method.Name);
             var raw = _cachingSerializer.Serialize(obj);
             var options = _options.CurrentValue;
 

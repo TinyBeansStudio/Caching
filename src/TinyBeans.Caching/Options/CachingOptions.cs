@@ -3,7 +3,7 @@
 namespace TinyBeans.Caching.Options {
 
     /// <summary>
-    /// Options used by the <see cref="ICachingAspect{T}"/>.
+    /// Options used by the <see cref="ICachingAspect"/>.
     /// </summary>
     public class CachingOptions {
 

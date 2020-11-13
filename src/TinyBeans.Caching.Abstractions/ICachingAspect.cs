@@ -6,8 +6,7 @@ namespace TinyBeans.Caching {
     /// <summary>
     /// Represents a type used to wrap and cache method return values.
     /// </summary>
-    /// <typeparam name="T">The type to wrap and cache return values.</typeparam>
-    public interface ICachingAspect<T> where T : class {
+    public interface ICachingAspect {
 
         /// <summary>
         /// Invokes the supplied method and caches the result.

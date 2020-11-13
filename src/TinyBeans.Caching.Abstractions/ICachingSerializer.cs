@@ -1,7 +1,7 @@
 ﻿namespace TinyBeans.Caching {
 
     /// <summary>
-    /// Represents a type used by <see cref="ICachingAspect{T}"/> to serialize and deserialize objects.
+    /// Represents a type used by <see cref="ICachingAspect"/> to serialize and deserialize objects.
     /// </summary>
     public interface ICachingSerializer {
 
