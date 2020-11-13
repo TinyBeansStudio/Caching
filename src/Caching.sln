@@ -5,7 +5,11 @@ VisualStudioVersion = 16.0.30709.132
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TinyBeans.Caching", "TinyBeans.Caching\TinyBeans.Caching.csproj", "{11C38D82-CB96-46C3-ACE4-BFCD258729CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyBeans.Caching.Abstractions", "TinyBeans.Caching.Abstractions\TinyBeans.Caching.Abstractions.csproj", "{FF4E6FF7-7200-4B77-A304-80A1650E93D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TinyBeans.Caching.Abstractions", "TinyBeans.Caching.Abstractions\TinyBeans.Caching.Abstractions.csproj", "{FF4E6FF7-7200-4B77-A304-80A1650E93D5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2CCC61C4-DF11-46F0-97D1-B6CAA8F77934}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyBeans.Caching.Tests", "..\tests\TinyBeans.Caching.Tests\TinyBeans.Caching.Tests.csproj", "{6801FBD4-69C8-4CED-8117-DE7FA46D283F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +25,16 @@ Global
 		{FF4E6FF7-7200-4B77-A304-80A1650E93D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF4E6FF7-7200-4B77-A304-80A1650E93D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF4E6FF7-7200-4B77-A304-80A1650E93D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6801FBD4-69C8-4CED-8117-DE7FA46D283F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6801FBD4-69C8-4CED-8117-DE7FA46D283F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6801FBD4-69C8-4CED-8117-DE7FA46D283F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6801FBD4-69C8-4CED-8117-DE7FA46D283F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6801FBD4-69C8-4CED-8117-DE7FA46D283F} = {2CCC61C4-DF11-46F0-97D1-B6CAA8F77934}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {00C89C56-1EB1-4D0B-8BB8-AAFDC2BC2AAA}
