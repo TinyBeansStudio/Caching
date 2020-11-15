@@ -12,7 +12,7 @@
 		<Description>TinyBeans.Caching is a component to ease caching of method results.</Description>
 		<PackageProjectUrl>https://github.com/TinyBeansStudio/Caching</PackageProjectUrl>
 		<PackageTags>Caching</PackageTags>
-		<Version>3.1.0-prerelease04</Version>
+		<Version>3.1.0-prerelease05</Version>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Copyright>© 2020 Tiny Beans, LLC</Copyright>
 		<PackageIcon>icon.png</PackageIcon>
@@ -22,7 +22,7 @@
 		<PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="3.1.0" />
 		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.0" />
 		<PackageReference Include="System.Text.Json" Version="4.7.0" />
-		<PackageReference Include="TinyBeans.Caching.Abstractions" Version="3.1.0-prerelease04" />
+		<PackageReference Include="TinyBeans.Caching.Abstractions" Version="3.1.0-prerelease05" />
 	</ItemGroup>
 
 	<ItemGroup>

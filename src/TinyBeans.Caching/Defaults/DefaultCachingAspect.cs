@@ -53,8 +53,8 @@ namespace TinyBeans.Caching.Defaults {
             var r = method();
 
             _distributedCache.SetString(cacheKey, _cachingSerializer.Serialize(r), new DistributedCacheEntryOptions() {
-                AbsoluteExpiration = DateTime.Now.Add(options.AbsoluteExpiration),
-                SlidingExpiration = options.SlidingExpiration
+                AbsoluteExpirationRelativeToNow = options.AbsoluteExpiration ?? (TimeSpan?)null,
+                SlidingExpiration = options.SlidingExpiration ?? (TimeSpan?)null
             });
 
             return r;
@@ -87,8 +87,8 @@ namespace TinyBeans.Caching.Defaults {
             var r = await method();
 
             await _distributedCache.SetStringAsync(cacheKey, _cachingSerializer.Serialize(r), new DistributedCacheEntryOptions() {
-                AbsoluteExpiration = DateTime.Now.Add(options.AbsoluteExpiration),
-                SlidingExpiration = options.SlidingExpiration
+                AbsoluteExpirationRelativeToNow = options.AbsoluteExpiration ?? (TimeSpan?)null,
+                SlidingExpiration = options.SlidingExpiration ?? (TimeSpan?)null
             });
 
             return r;

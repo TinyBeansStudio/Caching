@@ -10,11 +10,11 @@ namespace TinyBeans.Caching.Options {
         /// <summary>
         /// The maximum amount of time a result can be cached before going stale.
         /// </summary>
-        public TimeSpan AbsoluteExpiration { get; set; }
+        public TimeSpan? AbsoluteExpiration { get; set; }
 
         /// <summary>
         /// The amount of time a result can be cached without being accessed before going stale.
         /// </summary>
-        public TimeSpan SlidingExpiration { get; set; }
+        public TimeSpan? SlidingExpiration { get; set; }
     }
 }
