@@ -31,145 +31,25 @@ namespace TinyBeans.Caching.Tests.Defaults {
         private DefaultCachingAspect Sut => new DefaultCachingAspect(_defaultCachingSerializer, _distributedCacheMock.Object, _optionsMonitorMock.Object);
 
         [Fact]
-        public void ResultMethod0ParametersRuns() {
+        public void ResultMethod() {
             var sut = Sut;
             var dummy = new DummyClass();
 
-            _ = sut.Invoke(dummy.ResultMethod);
-            _ = sut.Invoke(dummy.ResultMethod);
-            _ = sut.Invoke(dummy.ResultMethod);
+            _ = sut.Invoke("key", () => { return dummy.ResultMethod(); });
+            _ = sut.Invoke("key", () => { return dummy.ResultMethod(); });
+            _ = sut.Invoke("key", () => { return dummy.ResultMethod(); });
 
             _distributedCacheMock.Verify(x => x.Set(It.IsAny<string>(), It.IsAny<byte[]>(), It.IsAny<DistributedCacheEntryOptions>()), Times.Exactly(1));
         }
 
         [Fact]
-        public void ResultMethod1ParameterRuns() {
+        public void ResultMethodAsync() {
             var sut = Sut;
             var dummy = new DummyClass();
 
-            _ = sut.Invoke(dummy.ResultMethod, (DummyPoco)null);
-            _ = sut.Invoke(dummy.ResultMethod, (DummyPoco)null);
-            _ = sut.Invoke(dummy.ResultMethod, (DummyPoco)null);
-
-            _distributedCacheMock.Verify(x => x.Set(It.IsAny<string>(), It.IsAny<byte[]>(), It.IsAny<DistributedCacheEntryOptions>()), Times.Exactly(1));
-        }
-
-        [Fact]
-        public void ResultMethod2ParametersRuns() {
-            var sut = Sut;
-            var dummy = new DummyClass();
-
-            _ = sut.Invoke(dummy.ResultMethod, (DummyPoco)null, (DummyPoco)null);
-            _ = sut.Invoke(dummy.ResultMethod, (DummyPoco)null, (DummyPoco)null);
-            _ = sut.Invoke(dummy.ResultMethod, (DummyPoco)null, (DummyPoco)null);
-
-            _distributedCacheMock.Verify(x => x.Set(It.IsAny<string>(), It.IsAny<byte[]>(), It.IsAny<DistributedCacheEntryOptions>()), Times.Exactly(1));
-        }
-
-        [Fact]
-        public void ResultMethod3ParametersRuns() {
-            var sut = Sut;
-            var dummy = new DummyClass();
-
-            _ = sut.Invoke(dummy.ResultMethod, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null);
-            _ = sut.Invoke(dummy.ResultMethod, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null);
-            _ = sut.Invoke(dummy.ResultMethod, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null);
-
-            _distributedCacheMock.Verify(x => x.Set(It.IsAny<string>(), It.IsAny<byte[]>(), It.IsAny<DistributedCacheEntryOptions>()), Times.Exactly(1));
-        }
-
-        [Fact]
-        public void ResultMethod4ParametersRuns() {
-            var sut = Sut;
-            var dummy = new DummyClass();
-
-            _ = sut.Invoke(dummy.ResultMethod, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null);
-            _ = sut.Invoke(dummy.ResultMethod, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null);
-            _ = sut.Invoke(dummy.ResultMethod, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null);
-
-            _distributedCacheMock.Verify(x => x.Set(It.IsAny<string>(), It.IsAny<byte[]>(), It.IsAny<DistributedCacheEntryOptions>()), Times.Exactly(1));
-        }
-
-        [Fact]
-        public void ResultMethod5ParametersRuns() {
-            var sut = Sut;
-            var dummy = new DummyClass();
-
-            _ = sut.Invoke(dummy.ResultMethod, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null);
-            _ = sut.Invoke(dummy.ResultMethod, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null);
-            _ = sut.Invoke(dummy.ResultMethod, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null);
-
-            _distributedCacheMock.Verify(x => x.Set(It.IsAny<string>(), It.IsAny<byte[]>(), It.IsAny<DistributedCacheEntryOptions>()), Times.Exactly(1));
-        }
-
-        [Fact]
-        public void ResultMethodAsync0ParametersRuns() {
-            var sut = Sut;
-            var dummy = new DummyClass();
-
-            _ = sut.InvokeAsync(dummy.ResultMethodAsync).Result;
-            _ = sut.InvokeAsync(dummy.ResultMethodAsync).Result;
-            _ = sut.InvokeAsync(dummy.ResultMethodAsync).Result;
-
-            _distributedCacheMock.Verify(x => x.SetAsync(It.IsAny<string>(), It.IsAny<byte[]>(), It.IsAny<DistributedCacheEntryOptions>(), It.IsAny<CancellationToken>()), Times.Exactly(1));
-        }
-
-        [Fact]
-        public void ResultMethodAsync1ParameterRuns() {
-            var sut = Sut;
-            var dummy = new DummyClass();
-
-            _ = sut.InvokeAsync(dummy.ResultMethodAsync, (DummyPoco)null);
-            _ = sut.InvokeAsync(dummy.ResultMethodAsync, (DummyPoco)null);
-            _ = sut.InvokeAsync(dummy.ResultMethodAsync, (DummyPoco)null);
-
-            _distributedCacheMock.Verify(x => x.SetAsync(It.IsAny<string>(), It.IsAny<byte[]>(), It.IsAny<DistributedCacheEntryOptions>(), It.IsAny<CancellationToken>()), Times.Exactly(1));
-        }
-
-        [Fact]
-        public void ResultMethodAsync2ParametersRuns() {
-            var sut = Sut;
-            var dummy = new DummyClass();
-
-            _ = sut.InvokeAsync(dummy.ResultMethodAsync, (DummyPoco)null, (DummyPoco)null);
-            _ = sut.InvokeAsync(dummy.ResultMethodAsync, (DummyPoco)null, (DummyPoco)null);
-            _ = sut.InvokeAsync(dummy.ResultMethodAsync, (DummyPoco)null, (DummyPoco)null);
-
-            _distributedCacheMock.Verify(x => x.SetAsync(It.IsAny<string>(), It.IsAny<byte[]>(), It.IsAny<DistributedCacheEntryOptions>(), It.IsAny<CancellationToken>()), Times.Exactly(1));
-        }
-
-        [Fact]
-        public void ResultMethodAsync3ParametersRuns() {
-            var sut = Sut;
-            var dummy = new DummyClass();
-
-            _ = sut.InvokeAsync(dummy.ResultMethodAsync, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null);
-            _ = sut.InvokeAsync(dummy.ResultMethodAsync, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null);
-            _ = sut.InvokeAsync(dummy.ResultMethodAsync, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null);
-
-            _distributedCacheMock.Verify(x => x.SetAsync(It.IsAny<string>(), It.IsAny<byte[]>(), It.IsAny<DistributedCacheEntryOptions>(), It.IsAny<CancellationToken>()), Times.Exactly(1));
-        }
-
-        [Fact]
-        public void ResultMethodAsync4ParametersRuns() {
-            var sut = Sut;
-            var dummy = new DummyClass();
-
-            _ = sut.InvokeAsync(dummy.ResultMethodAsync, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null);
-            _ = sut.InvokeAsync(dummy.ResultMethodAsync, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null);
-            _ = sut.InvokeAsync(dummy.ResultMethodAsync, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null);
-
-            _distributedCacheMock.Verify(x => x.SetAsync(It.IsAny<string>(), It.IsAny<byte[]>(), It.IsAny<DistributedCacheEntryOptions>(), It.IsAny<CancellationToken>()), Times.Exactly(1));
-        }
-
-        [Fact]
-        public void ResultMethodAsync5ParametersRuns() {
-            var sut = Sut;
-            var dummy = new DummyClass();
-
-            _ = sut.InvokeAsync(dummy.ResultMethodAsync, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null);
-            _ = sut.InvokeAsync(dummy.ResultMethodAsync, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null);
-            _ = sut.InvokeAsync(dummy.ResultMethodAsync, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null, (DummyPoco)null);
+            _ = sut.InvokeAsync("key", () => { return dummy.ResultMethodAsync(); }).Result;
+            _ = sut.InvokeAsync("key", () => { return dummy.ResultMethodAsync(); }).Result;
+            _ = sut.InvokeAsync("key", () => { return dummy.ResultMethodAsync(); }).Result;
 
             _distributedCacheMock.Verify(x => x.SetAsync(It.IsAny<string>(), It.IsAny<byte[]>(), It.IsAny<DistributedCacheEntryOptions>(), It.IsAny<CancellationToken>()), Times.Exactly(1));
         }

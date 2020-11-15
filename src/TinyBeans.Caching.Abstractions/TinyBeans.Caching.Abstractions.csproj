@@ -2,6 +2,27 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	  <Nullable>enable</Nullable>
+	  <LangVersion>latest</LangVersion>
+	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	  <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+	  <Authors>Jeffrey Rutt</Authors>
+	  <Company>Tiny Beans, LLC</Company>
+	  <Description>TinyBeans.Caching.Abstractions contains the common interfaces for TinyBeans.Caching.</Description>
+	  <PackageProjectUrl>https://github.com/TinyBeansStudio/Caching</PackageProjectUrl>
+	  <PackageTags>Caching</PackageTags>
+	  <Version>3.1.0-prerelease04</Version>
+	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+	  <Copyright>© 2020 Tiny Beans, LLC</Copyright>
+	  <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
