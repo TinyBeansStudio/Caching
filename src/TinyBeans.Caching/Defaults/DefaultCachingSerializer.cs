@@ -27,7 +27,7 @@ namespace TinyBeans.Caching.Defaults {
         /// <typeparam name="T">The type to deserialize.</typeparam>
         /// <param name="data">The string to deserialize.</param>
         /// <returns>The deserialized object.</returns>
-        public T Deserialize<T>(string data) {
+        public T? Deserialize<T>(string data) {
             return JsonSerializer.Deserialize<T>(data, _options);
         }
     }
