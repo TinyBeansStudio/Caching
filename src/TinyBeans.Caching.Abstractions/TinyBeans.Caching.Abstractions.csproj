@@ -12,7 +12,7 @@
 	  <Description>TinyBeans.Caching.Abstractions contains the common interfaces for TinyBeans.Caching.</Description>
 	  <PackageProjectUrl>https://github.com/TinyBeansStudio/Caching</PackageProjectUrl>
 	  <PackageTags>Caching</PackageTags>
-	  <Version>3.1.0-prerelease05</Version>
+	  <Version>3.1.0</Version>
 	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
 	  <Copyright>© 2020 Tiny Beans, LLC</Copyright>
 	  <PackageIcon>icon.png</PackageIcon>
